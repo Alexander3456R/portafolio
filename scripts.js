@@ -385,6 +385,7 @@ const datosSkills = {
         { nombre: 'Linux', icono: 'linux', color: '#FCC624' },
         { nombre: 'VS Code', icono: 'simple-icons:visualstudiocode', color: '#007ACC' },
         { nombre: 'Postman', icono: 'postman', color: '#FF6C37' },
+        { nombre: 'DOMcloud', icono: 'https://domcloud.co/assets/icon.svg', color: '#5B6ABF' },
         { nombre: 'Figma', icono: 'figma', color: '#F24E1E' },
         { nombre: 'Netlify', icono: 'netlify', color: '#00C7B7' },
         { nombre: 'Vercel', icono: 'vercel', color: '#ffffff' },
@@ -421,11 +422,13 @@ const iniciarSkillsPremium = () => {
             card.className = 'skill-card-premium card-3d';
             card.style.borderColor = skill.color + '20';
             card.style.setProperty('--card-color', skill.color);
-            const urlIcono = skill.icono.includes('/')
+            const urlIcono = skill.icono.startsWith('http')
                 ? skill.icono
-                : skill.icono.includes(':')
-                    ? `https://api.iconify.design/${skill.icono}.svg?color=${encodeURIComponent(skill.color)}`
-                    : `https://cdn.simpleicons.org/${skill.icono}/${skill.color.replace('#', '')}`;
+                : skill.icono.includes('/')
+                    ? skill.icono
+                    : skill.icono.includes(':')
+                        ? `https://api.iconify.design/${skill.icono}.svg?color=${encodeURIComponent(skill.color)}`
+                        : `https://cdn.simpleicons.org/${skill.icono}/${skill.color.replace('#', '')}`;
             card.innerHTML = `
                 <div class="card-glow"></div>
                 <div class="card-shine"></div>
@@ -549,26 +552,12 @@ const iniciarProyectosGithub = async () => {
     if (!contenedor) return;
 
     const repositorios = [
-        'Alexander3456R/olimpo_gym',
-        'Alexander3456R/techverse-mvc',
         'Alexander3456R/appsalon_mvc',
         'Alexander3456R/uptask_mvc',
         'Alexander3456R/bienesraices'
     ];
 
     const datosRespaldo = {
-        'Alexander3456R/olimpo_gym': {
-            description: 'Sistema de gestión integral para gimnasios con control de membresías, rutinas y pagos.',
-            language: 'PHP',
-            topics: ['laravel', 'gym-management', 'saas'],
-            html_url: 'https://github.com/Alexander3456R/olimpo_gym'
-        },
-        'Alexander3456R/techverse-mvc': {
-            description: 'Plataforma tecnológica construida con arquitectura MVC para gestión de contenido y usuarios.',
-            language: 'PHP',
-            topics: ['mvc', 'php', 'web'],
-            html_url: 'https://github.com/Alexander3456R/techverse-mvc'
-        },
         'Alexander3456R/appsalon_mvc': {
             description: 'Aplicación web para salones de belleza con sistema de citas, catálogo de servicios y administración.',
             language: 'PHP',
