@@ -375,7 +375,8 @@ const datosSkills = {
         { nombre: 'PostgreSQL', icono: 'postgresql', color: '#4169E1' },
         { nombre: 'MongoDB', icono: 'mongodb', color: '#47A248' },
         { nombre: 'SQLite', icono: 'sqlite', color: '#003B57' },
-        { nombre: 'Firebase', icono: 'firebase', color: '#FFCA28' }
+        { nombre: 'Firebase', icono: 'firebase', color: '#FFCA28' },
+        { nombre: 'Supabase', icono: 'supabase', color: '#3ECF8E' }
     ],
     tools: [
         { nombre: 'Git', icono: 'git', color: '#F05032' },
@@ -386,7 +387,21 @@ const datosSkills = {
         { nombre: 'Postman', icono: 'postman', color: '#FF6C37' },
         { nombre: 'Figma', icono: 'figma', color: '#F24E1E' },
         { nombre: 'Netlify', icono: 'netlify', color: '#00C7B7' },
-        { nombre: 'Vercel', icono: 'vercel', color: '#ffffff' }
+        { nombre: 'Vercel', icono: 'vercel', color: '#ffffff' },
+        { nombre: 'Vite', icono: 'vite', color: '#646CFF' },
+        { nombre: 'Excel', icono: 'simple-icons:microsoftexcel', color: '#217346' },
+        { nombre: 'PowerPoint', icono: 'simple-icons:microsoftpowerpoint', color: '#B7472A' },
+        { nombre: 'Word', icono: 'simple-icons:microsoftword', color: '#2B579A' },
+        { nombre: 'Antigravity', icono: 'simple-icons:google', color: '#4285F4' },
+        { nombre: 'Brevo SMTP', icono: 'brevo', color: '#0B996E' },
+        { nombre: 'Kali Linux', icono: 'kalilinux', color: '#557C94' },
+        { nombre: 'Wireshark', icono: 'wireshark', color: '#1679A7' },
+        { nombre: 'Nmap', icono: 'fotos/sitelogo-nmap.svg', color: '#94B53C' },
+        { nombre: 'VirtualBox', icono: 'virtualbox', color: '#183A61' },
+        { nombre: 'VMware', icono: 'vmware', color: '#607078' },
+        { nombre: 'Hydra', icono: 'fotos/hydra-logo.svg', color: '#D32F2F' },
+        { nombre: 'Maltego', icono: 'fotos/Maltego-Logo-Horizontal-Black.svg', color: '#6C27A3' },
+        { nombre: 'Seeker', icono: 'fotos/console-svgrepo-com.svg', color: '#E65100' }
     ]
 };
 
@@ -406,9 +421,11 @@ const iniciarSkillsPremium = () => {
             card.className = 'skill-card-premium card-3d';
             card.style.borderColor = skill.color + '20';
             card.style.setProperty('--card-color', skill.color);
-            const urlIcono = skill.icono.includes(':')
-                ? `https://api.iconify.design/${skill.icono}.svg?color=${encodeURIComponent(skill.color)}`
-                : `https://cdn.simpleicons.org/${skill.icono}/${skill.color.replace('#', '')}`;
+            const urlIcono = skill.icono.includes('/')
+                ? skill.icono
+                : skill.icono.includes(':')
+                    ? `https://api.iconify.design/${skill.icono}.svg?color=${encodeURIComponent(skill.color)}`
+                    : `https://cdn.simpleicons.org/${skill.icono}/${skill.color.replace('#', '')}`;
             card.innerHTML = `
                 <div class="card-glow"></div>
                 <div class="card-shine"></div>
