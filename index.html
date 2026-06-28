@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Christopher Revelo | Ingeniero de Software y Ciberseguridad</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <!-- Tailwind Config -->
+        <script id="tailwind-config">
+                tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "surface-container-lowest": "#0b0e15",
+                                                "outline-variant": "#424754",
+                                                "primary-fixed-dim": "#adc6ff",
+                                                "surface-variant": "#32353c",
+                                                "on-primary": "#002e6a",
+                                                "on-secondary-container": "#00424e",
+                                                "on-error": "#690005",
+                                                "tertiary": "#d0bcff",
+                                                "surface-container-low": "#191b23",
+                                                "on-error-container": "#ffdad6",
+                                                "on-background": "#e1e2ec",
+                                                "on-surface-variant": "#c2c6d6",
+                                                "secondary": "#4cd7f6",
+                                                "tertiary-container": "#a078ff",
+                                                "surface-bright": "#363941",
+                                                "surface-container-high": "#272a31",
+                                                "background": "#10131a",
+                                                "on-tertiary": "#3c0091",
+                                                "inverse-primary": "#005ac2",
+                                                "on-primary-container": "#00285d",
+                                                "on-surface": "#e1e2ec",
+                                                "tertiary-fixed-dim": "#d0bcff",
+                                                "on-primary-fixed": "#001a42",
+                                                "surface": "#10131a",
+                                                "error": "#ffb4ab",
+                                                "secondary-fixed-dim": "#4cd7f6",
+                                                "on-secondary-fixed": "#001f26",
+                                                "primary": "#adc6ff",
+                                                "tertiary-fixed": "#e9ddff",
+                                                "secondary-container": "#03b5d3",
+                                                "on-tertiary-container": "#340080",
+                                                "inverse-on-surface": "#2e3038",
+                                                "on-tertiary-fixed": "#23005c",
+                                                "primary-container": "#4d8eff",
+                                                "inverse-surface": "#e1e2ec",
+                                                "on-secondary": "#003640",
+                                                "surface-container-highest": "#32353c",
+                                                "on-secondary-fixed-variant": "#004e5c",
+                                                "surface-container": "#1d2027",
+                                                "surface-tint": "#adc6ff",
+                                                "outline": "#8c909f",
+                                                "secondary-fixed": "#acedff",
+                                                "primary-fixed": "#d8e2ff",
+                                                "on-primary-fixed-variant": "#004395",
+                                                "error-container": "#93000a",
+                                                "on-tertiary-fixed-variant": "#5516be",
+                                                "surface-dim": "#10131a"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "0.125rem",
+                                                "lg": "0.25rem",
+                                                "xl": "0.5rem",
+                                                "full": "0.75rem"
+                                        },
+                                        "spacing": {
+                                                "lg": "48px",
+                                                "container-max": "1200px",
+                                                "sm": "16px",
+                                                "base": "4px",
+                                                "gutter": "24px",
+                                                "md": "24px",
+                                                "xs": "8px",
+                                                "xl": "80px"
+                                        },
+                                        "fontFamily": {
+                                                "display-lg": ["Plus Jakarta Sans"],
+                                                "label-mono": ["JetBrains Mono"],
+                                                "body-lg": ["Inter"],
+                                                "headline-md": ["Plus Jakarta Sans"],
+                                                "headline-lg": ["Plus Jakarta Sans"],
+                                                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                                                "body-md": ["Inter"]
+                                        },
+                                        "fontSize": {
+                                                "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                                                "label-mono": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                                                "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                                                "headline-md": ["24px", { "lineHeight": "1.4", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                                                "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+                                                "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                                                "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }]
+                                        }
+                                },
+                        },
+                }
+        </script>
+        <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body class="font-body-md selection:bg-primary selection:text-on-primary">
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN: INTRO DE BIENVENIDA (Overlay animado)               -->
+        <!-- ============================================================ -->
+        <div id="intro-overlay">
+                <div class="intro-contenido">
+                        <div class="intro-iconos">
+                                <span class="intro-icono material-symbols-outlined">code</span>
+                                <span class="intro-icono material-symbols-outlined">database</span>
+                                <span class="intro-icono material-symbols-outlined">cloud</span>
+                                <span class="intro-icono material-symbols-outlined">terminal</span>
+                                <span class="intro-icono material-symbols-outlined">layers</span>
+                        </div>
+                        <h1 class="intro-nombre" id="intro-texto"></h1>
+                        <div class="intro-bar"></div>
+                        <p class="intro-tagline">Christopher Revelo • Ingeniero de Software y Ciberseguridad</p>
+                </div>
+        </div>
+        <div class="spotlight" id="mouse-spotlight"></div>
+
+        <!-- ============================================================ -->
+        <!-- SECCIÓN: BARRA DE NAVEGACIÓN PREMIUM (Flotante centrado)     -->
+        <!-- ============================================================ -->
+        <nav class="nav-premium" id="nav-premium" aria-label="Navegación principal">
+                <div class="nav-links" id="nav-links">
+                        <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
+                        <ul>
+                                <li><a href="#" class="nav-link activo" data-seccion="inicio" aria-current="page"><i data-lucide="home"></i> Sobre m&iacute;</a></li>
+                                <li><a href="#portafolio" class="nav-link" data-seccion="portafolio"><i data-lucide="folder"></i> Portafolio</a></li>
+                                <li><a href="#servicios" class="nav-link" data-seccion="servicios"><i data-lucide="settings"></i> Servicios</a></li>
+                                <li><a href="#contact" class="nav-link" data-seccion="contacto"><i data-lucide="mail"></i> Contacto</a></li>
+                        </ul>
+                </div>
+                <button class="nav-mobile-btn" id="menu-btn" aria-label="Abrir men&uacute;">
+                        <i data-lucide="menu"></i>
+                </button>
+        </nav>
+        <!-- Menú móvil fullscreen -->
+        <div class="nav-mobile-overlay" id="nav-mobile-overlay">
+                <div class="nav-mobile-header">
+                        <span class="nav-mobile-titulo">Men&uacute;</span>
+                        <button class="nav-mobile-cerrar" id="nav-mobile-cerrar" aria-label="Cerrar men&uacute;">
+                                <i data-lucide="x"></i>
+                        </button>
+                </div>
+                <ul class="nav-mobile-links">
+                        <li><a href="#" class="nav-mobile-link"><i data-lucide="home"></i> Sobre m&iacute;</a></li>
+                        <li><a href="#portafolio" class="nav-mobile-link"><i data-lucide="folder"></i> Portafolio</a></li>
+                        <li><a href="#servicios" class="nav-mobile-link"><i data-lucide="settings"></i> Servicios</a></li>
+                        <li><a href="#contact" class="nav-mobile-link"><i data-lucide="mail"></i> Contacto</a></li>
+                </ul>
+        </div>
+        <main class="pt-nav">
+                <!-- ============================================================ -->
+                <!-- SECCIÓN: Presentación principal                -->
+                <!-- ============================================================ -->
+                <section class="min-h-dvh flex flex-col justify-center relative px-gutter max-w-container-max mx-auto">
+                        <div class="grid md:grid-cols-2 gap-xl items-center">
+                                <div class="space-y-md">
+                                        <div
+                                                class="hero-badge inline-flex items-center gap-xs px-sm py-base rounded-full bg-surface-variant/30 border border-outline-variant/30 text-secondary font-label-mono text-label-mono">
+                                                <span class="relative flex h-2 w-2">
+                                                        <span
+                                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                                        <span
+                                                                class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                                </span>
+                                                Disponible para nuevos proyectos
+                                        </div>
+                                        <h1
+                                                class="hero-title font-display-lg text-display-lg text-gradient leading-none">
+                                                Hola, soy Christopher Revelo
+                                        </h1>
+                                        <div class="hero-role" style="min-height:1.4em">
+                                                <span class="typewriter-text"></span><span
+                                                        class="typewriter-cursor"></span>
+                                        </div>
+                                        <p
+                                                class="hero-desc font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                                                Diseño y construyo aplicaciones web modernas, productos SaaS, soluciones
+                                                IoT y software escalable enfocado en el rendimiento, la seguridad y una
+                                                experiencia de usuario excepcional.
+                                        </p>
+                                        <div class="hero-buttons flex flex-wrap gap-md pt-sm">
+                                                <a class="bg-primary text-on-primary px-xl py-md rounded-xl font-bold flex items-center gap-sm hover:shadow-[0_0_25px_rgba(173,198,255,0.4)] transition-all"
+                                                        href="#portafolio">
+                                                        Ver Proyectos <span
+                                                                class="material-symbols-outlined">arrow_forward</span>
+                                                </a>
+                                                <button
+                                                        class="border border-primary/30 text-primary hover:bg-primary/10 px-xl py-md rounded-xl font-bold transition-all">
+                                                        Descargar CV
+                                                </button>
+                                        </div>
+                                </div>
+                                <div class="hero-image-wrap relative flex justify-center items-center group">
+                                        <div
+                                                class="absolute inset-0 bg-primary/20 blur-[120px] rounded-full group-hover:bg-primary/30 transition-all duration-700">
+                                        </div>
+                                        <div
+                                                class="relative w-full max-w-[250px] md:max-w-[400px] aspect-[0.8] md:aspect-[0.6] glass-card rounded-3xl overflow-hidden p-xs">
+                                                <div
+                                                        class="w-full h-full rounded-2xl overflow-hidden border border-white/5 relative">
+                                                        <picture>
+                                                                <source srcset="fotos/yo.avif" type="image/avif">
+                                                                <source srcset="fotos/yo.webp" type="image/webp">
+                                                                <img alt="Christopher Revelo"
+                                                                        class="w-full h-full object-cover"
+                                                                        src="fotos/yo.png" />
+                                                        </picture>
+                                                </div>
+                                        </div>
+                                        <!-- Floating Badges -->
+                                        <div class="floating-badge hidden md:flex absolute -top-4 -right-4 glass-card px-md py-sm rounded-xl flex items-center gap-xs animate-bounce"
+                                                style="animation-duration: 3s">
+                                                <span class="material-symbols-outlined text-secondary"
+                                                        style="font-variation-settings: 'FILL' 1;">shield</span>
+                                                <span class="font-label-mono text-label-mono">Confidencialidad</span>
+                                        </div>
+                                        <div class="floating-badge hidden md:flex absolute bottom-10 -left-10 glass-card px-md py-sm rounded-xl flex items-center gap-xs animate-bounce"
+                                                style="animation-duration: 4s">
+                                                <span class="material-symbols-outlined text-tertiary"
+                                                        style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                                <span class="font-label-mono text-label-mono">Integridad</span>
+                                        </div>
+                                        <div class="floating-badge hidden md:flex absolute top-1/2 -right-12 glass-card px-md py-sm rounded-xl flex items-center gap-xs animate-bounce"
+                                                style="animation-duration: 3.5s">
+                                                <span class="material-symbols-outlined text-primary"
+                                                        style="font-variation-settings: 'FILL' 1;">timer</span>
+                                                <span class="font-label-mono text-label-mono">Disponibilidad</span>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+                <!-- ============================================================ -->
+                <!-- SECCIÓN: ESTADÍSTICAS — Contadores animados            -->
+                <!-- ============================================================ -->
+                <section class="py-xl px-gutter max-w-container-max mx-auto" id="about">
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+                                <div class="glass-card card-3d px-md py-lg md:p-xl rounded-2xl">
+                                        <div class="card-glow"></div>
+                                        <div class="card-shine"></div>
+                                        <div class="flex justify-center mb-xs"><span
+                                                        class="stat-number font-display-lg text-display-lg text-primary"
+                                                        data-objetivo="25" data-sufijo="+">0</span>
+                                        </div>
+                                        <div class="text-on-surface-variant font-label-mono text-center"
+                                                style="display:flex;flex-direction:column;align-items:center">Proyectos
+                                                Completados</div>
+                                </div>
+                                <div class="glass-card card-3d px-md py-lg md:p-xl rounded-2xl">
+                                        <div class="card-glow"></div>
+                                        <div class="card-shine"></div>
+                                        <div class="flex justify-center mb-xs"><span
+                                                        class="stat-number font-display-lg text-display-lg text-secondary"
+                                                        data-objetivo="4" data-sufijo="+">0</span>
+                                        </div>
+                                        <div class="text-on-surface-variant font-label-mono text-center"
+                                                style="display:flex;flex-direction:column;align-items:center">
+                                                A&ntilde;os de Aprendizaje</div>
+                                </div>
+                                <div class="glass-card card-3d px-md py-lg md:p-xl rounded-2xl">
+                                        <div class="card-glow"></div>
+                                        <div class="card-shine"></div>
+                                        <div class="flex justify-center mb-xs"><span
+                                                        class="stat-number font-display-lg text-display-lg text-tertiary"
+                                                        data-objetivo="800" data-sufijo="+">0</span>
+                                        </div>
+                                        <div class="text-on-surface-variant font-label-mono text-center"
+                                                style="display:flex;flex-direction:column;align-items:center">
+                                                Contribuciones en GitHub
+                                        </div>
+                                </div>
+                                <div class="glass-card card-3d px-md py-lg md:p-xl rounded-2xl">
+                                        <div class="card-glow"></div>
+                                        <div class="card-shine"></div>
+                                        <div class="flex justify-center mb-xs"><span
+                                                        class="stat-number font-display-lg text-display-lg text-primary-fixed-dim"
+                                                        data-objetivo="15" data-sufijo="+">0</span>
+                                        </div>
+                                        <div class="text-on-surface-variant font-label-mono text-center"
+                                                style="display:flex;flex-direction:column;align-items:center">
+                                                Certificaciones T&eacute;cnicas
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+                <!-- ============================================================ -->
+                <!-- SECCIÓN: PORTAFOLIO — Tabs de Proyectos, Certs y Skills -->
+                <!-- ============================================================ -->
+                <section class="py-xl px-gutter max-w-container-max mx-auto" id="portafolio">
+                        <div class="text-center mb-xl">
+                                <h2 class="font-headline-lg text-headline-lg mb-sm">Portafolio</h2>
+                                <p class="text-on-surface-variant font-body-lg">Proyectos, certificaciones y stack
+                                        tecnol&oacute;gico.</p>
+                        </div>
+                        <!-- Tabs centrados -->
+                        <div class="portafolio-tabs mx-auto" role="tablist" style="width:fit-content">
+                                <button class="portafolio-tab activo" data-panel="proyectos"
+                                        role="tab">Proyectos</button>
+                                <button class="portafolio-tab" data-panel="certificaciones"
+                                        role="tab">Certificaciones</button>
+                                <button class="portafolio-tab" data-panel="habilidades" role="tab">Habilidades
+                                        Tecnol&oacute;gicas</button>
+                                <div class="portafolio-indicador"></div>
+                        </div>
+                        <!-- Panel: Proyectos -->
+                        <div class="portafolio-panel activo" id="panel-proyectos" role="tabpanel">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-xl" id="projects-grid">
+                                        <!-- Project 1 -->
+                                        <div
+                                                class="project-card card-3d reveal-on-scroll electric-border glass-card rounded-3xl overflow-hidden relative">
+                                                <canvas class="shader-bg" data-shader="electric"></canvas>
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <div class="card-content p-0">
+                                                        <div class="h-64 bg-surface-container relative overflow-hidden">
+                                                                <div
+                                                                        class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10">
+                                                                </div>
+                                                                <img alt="SaaS Gesti&oacute;n Gimnasios"
+                                                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8tnrMgLF8bkiIReY00aCl1o2lck0Jrtv8qC7fG6qekAwqnITpM5p2ON8rPziB1doq47LfrMivEwZb4VHxr4t-FL16ROEeRQnlq54c3auerpvX1RDF3RrPMEbtQ9wDYkJuO01k3Ar5c23C2IARaCuZgDiO1OKuPUziFzuBwz1q1i-IG5XRp-AyWduLdVwMLGxZIF72knj2IlLE85vNYkPAv_sVG4OO7Lfj7v_f-y3IR55qcmEkO4k4g" />
+                                                                <div
+                                                                        class="absolute bottom-md left-md z-20 flex gap-sm">
+                                                                        <span
+                                                                                class="bg-black/60 backdrop-blur-md px-sm py-xs rounded-lg text-label-mono text-secondary border border-secondary/30">SaaS</span>
+                                                                        <span
+                                                                                class="bg-black/60 backdrop-blur-md px-sm py-xs rounded-lg text-label-mono text-on-surface border border-white/10">Full
+                                                                                Stack</span>
+                                                                </div>
+                                                        </div>
+                                                        <div class="p-lg space-y-sm">
+                                                                <h3 class="font-headline-md text-headline-md">SaaS de
+                                                                        Gesti&oacute;n de
+                                                                        Gimnasios</h3>
+                                                                <p class="text-on-surface-variant font-body-md">
+                                                                        Plataforma
+                                                                        integral para orquestaci&oacute;n de centros de
+                                                                        fitness, con
+                                                                        seguimiento de membres&iacute;as y
+                                                                        facturaci&oacute;n automatizada.
+                                                                </p>
+                                                                <div class="flex gap-md pt-sm">
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">Laravel</span>
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">MySQL</span>
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">Tailwind</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <!-- Project 2 -->
+                                        <div
+                                                class="project-card card-3d reveal-on-scroll electric-border glass-card rounded-3xl overflow-hidden relative">
+                                                <canvas class="shader-bg" data-shader="electric"></canvas>
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <div class="card-content p-0">
+                                                        <div class="h-64 bg-surface-container relative overflow-hidden">
+                                                                <div
+                                                                        class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10">
+                                                                </div>
+                                                                <img alt="Hub IoT"
+                                                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdQURoWGhWm2DJMUNI68pZvoJVX2ghY9RLqVuCb4JGDivXRG8saR9OElejtyA9qpnY546MY5ttLNLfAUvjmDPdF48WhXjJ6L5j6i_2BUs39KilOvazSEr1cJ4Wn6u5D9rSpXeMJXqy9bmXgEeFIn72f0KNj3Nq-YVQCyosVDD4U30jksJ_6koE93GcrfVtZEM6rE2UiNZGlmTb0Lb38e64ddAlij0-REB3HrWqHIvBO-DJc5bIc4dnLw" />
+                                                                <div
+                                                                        class="absolute bottom-md left-md z-20 flex gap-sm">
+                                                                        <span
+                                                                                class="bg-black/60 backdrop-blur-md px-sm py-xs rounded-lg text-label-mono text-tertiary border border-tertiary/30">IoT</span>
+                                                                        <span
+                                                                                class="bg-black/60 backdrop-blur-md px-sm py-xs rounded-lg text-label-mono text-on-surface border border-white/10">Ingenier&iacute;a</span>
+                                                                </div>
+                                                        </div>
+                                                        <div class="p-lg space-y-sm">
+                                                                <h3 class="font-headline-md text-headline-md">Hub de
+                                                                        Monitoreo
+                                                                        IoT</h3>
+                                                                <p class="text-on-surface-variant font-body-md">
+                                                                        Vigilancia en
+                                                                        tiempo real y visualizaci&oacute;n de datos para
+                                                                        subestaciones
+                                                                        el&eacute;ctricas utilizando nodos ESP32 y
+                                                                        protocolos MQTT.</p>
+                                                                <div class="flex gap-md pt-sm">
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">React</span>
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">Node.js</span>
+                                                                        <span
+                                                                                class="font-label-mono text-[12px] text-outline uppercase tracking-widest">MQTT</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- Panel: Certificaciones -->
+                        <div class="portafolio-panel" id="panel-certificaciones" role="tabpanel">
+                                <div class="grid md:grid-cols-2 gap-xl">
+                                        <div
+                                                class="cert-card glass-card card-3d rounded-2xl overflow-hidden reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <div class="cert-img-wrap">
+                                                        <picture>
+                                                                <source srcset="fotos/certificadoingles.avif"
+                                                                        type="image/avif">
+                                                                <source srcset="fotos/certificadoingles.webp"
+                                                                        type="image/webp">
+                                                                <img src="fotos/certificadoingles.jpg"
+                                                                        alt="ECCE B2 &mdash; Michigan English"
+                                                                        class="cert-img" loading="lazy">
+                                                        </picture>
+                                                        <div class="cert-overlay">
+                                                                <span class="material-symbols-outlined">zoom_in</span>
+                                                        </div>
+                                                </div>
+                                                <div class="cert-body p-lg">
+                                                        <h3 class="font-headline-md text-headline-md">ECCE B2 &mdash;
+                                                                Michigan English</h3>
+                                                        <p class="text-on-surface-variant font-body-md mt-xs">
+                                                                Certificaci&oacute;n de ingl&eacute;s nivel B2.
+                                                                Comprensi&oacute;n oral, lectura, escritura y
+                                                                expresi&oacute;n oral.</p>
+                                                        <div class="flex items-center gap-sm mt-md">
+                                                                <span class="cert-badge">2023</span>
+                                                                <span class="text-on-surface-variant text-sm">University
+                                                                        of Michigan</span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div
+                                                class="cert-card glass-card card-3d rounded-2xl overflow-hidden reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <div class="cert-img-wrap">
+                                                        <picture>
+                                                                <source srcset="fotos/cursofullstack.avif"
+                                                                        type="image/avif">
+                                                                <source srcset="fotos/cursofullstack.webp"
+                                                                        type="image/webp">
+                                                                <img src="fotos/cursofullstack.jpg"
+                                                                        alt="Desarrollo Web Completo" class="cert-img"
+                                                                        loading="lazy">
+                                                        </picture>
+                                                        <div class="cert-overlay">
+                                                                <span class="material-symbols-outlined">zoom_in</span>
+                                                        </div>
+                                                </div>
+                                                <div class="cert-body p-lg">
+                                                        <h3 class="font-headline-md text-headline-md">Desarrollo Web
+                                                                Completo</h3>
+                                                        <p class="text-on-surface-variant font-body-md mt-xs">HTML5,
+                                                                CSS3, SCSS, JavaScript, AJAX, PHP y MySQL. Desarrollo
+                                                                full stack desde cero.</p>
+                                                        <div class="flex items-center gap-sm mt-md">
+                                                                <span class="cert-badge">2025</span>
+                                                                <span
+                                                                        class="text-on-surface-variant text-sm">Udemy</span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- Panel: Habilidades Tecnol&oacute;gicas -->
+                        <div class="portafolio-panel" id="panel-habilidades" role="tabpanel">
+                                <div class="skills-premium" id="skills-premium">
+                                        <div class="skills-tabs" role="tablist">
+                                                <button class="skills-tab activo" data-categoria="frontend"
+                                                        role="tab">Frontend</button>
+                                                <button class="skills-tab" data-categoria="backend"
+                                                        role="tab">Backend</button>
+                                                <button class="skills-tab" data-categoria="database"
+                                                        role="tab">Database</button>
+                                                <button class="skills-tab" data-categoria="tools" role="tab">DevOps
+                                                        &amp; Tools</button>
+                                        </div>
+                                        <div class="skills-grid" id="skills-grid"></div>
+                                </div>
+                        </div>
+                </section>
+
+                <!-- ============================================================ -->
+                <!-- SECCIÓN: SERVICIOS — Principales servicios ofrecidos   -->
+                <!-- ============================================================ -->
+                <section class="py-xl bg-surface-container-low/50" id="servicios">
+                        <div class="max-w-container-max mx-auto px-gutter">
+                                <h2 class="font-headline-lg text-headline-lg text-center mb-xl">Servicios Principales
+                                </h2>
+                                <div class="grid grid-cols-2 lg:grid-cols-4 gap-md" id="services-grid">
+                                        <div
+                                                class="service-card glass-card card-3d px-md py-lg md:p-lg rounded-2xl hover:bg-primary/5 transition-colors reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <span
+                                                        class="material-symbols-outlined text-primary mb-md text-[40px] md:text-[40px]">code</span>
+                                                <h5 class="font-headline-md text-[20px] mb-xs">Desarrollo Web</h5>
+                                                <p class="text-on-surface-variant text-[14px]">Arquitecturas web
+                                                        responsivas de alto rendimiento.</p>
+                                        </div>
+                                        <div
+                                                class="service-card glass-card card-3d px-md py-lg md:p-lg rounded-2xl hover:bg-secondary/5 transition-colors reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <span
+                                                        class="material-symbols-outlined text-secondary mb-md text-[40px]">security</span>
+                                                <h5 class="font-headline-md text-[20px] mb-xs">Ciberseguridad</h5>
+                                                <p class="text-on-surface-variant text-[14px]">Sistemas endurecidos con
+                                                        protocolos defensivos.</p>
+                                        </div>
+                                        <div
+                                                class="service-card glass-card card-3d px-md py-lg md:p-lg rounded-2xl hover:bg-tertiary/5 transition-colors reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <span
+                                                        class="material-symbols-outlined text-tertiary mb-md text-[40px]">memory</span>
+                                                <h5 class="font-headline-md text-[20px] mb-xs">Soluciones IoT</h5>
+                                                <p class="text-on-surface-variant text-[14px]">Puente hardware-software
+                                                        para automatizaci&oacute;n.</p>
+                                        </div>
+                                        <div
+                                                class="service-card glass-card card-3d px-md py-lg md:p-lg rounded-2xl hover:bg-primary-fixed-dim/5 transition-colors reveal-on-scroll">
+                                                <div class="card-glow"></div>
+                                                <div class="card-shine"></div>
+                                                <span
+                                                        class="material-symbols-outlined text-primary-fixed-dim mb-md text-[40px]">architecture</span>
+                                                <h5 class="font-headline-md text-[20px] mb-xs">Dise&ntilde;o UI/UX</h5>
+                                                <p class="text-on-surface-variant text-[14px]">Interfaces digitales
+                                                        modernas e intuitivas.</p>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+                <!-- ============================================================ -->
+                <!-- SECCIÓN: CONTACTO — WhatsApp, email y redes sociales   -->
+                <!-- ============================================================ -->
+                <section class="py-xl px-gutter max-w-container-max mx-auto" id="contact">
+                        <div class="grid md:grid-cols-2 gap-xl">
+                                <div class="contact-reveal">
+                                        <h2 class="font-headline-lg text-headline-lg mb-md">Construyamos el futuro
+                                                juntos</h2>
+                                        <p class="text-on-surface-variant font-body-lg mb-xl">¿Tienes un proyecto en
+                                                mente? Ponte en contacto y hablemos de cómo podemos dar vida a tu visión
+                                                con tecnología moderna.</p>
+                                        <div class="space-y-lg">
+                                                <a class="flex items-center gap-md group"
+                                                        href="https://wa.me/5930990237411" target="_blank">
+                                                        <div
+                                                                class="w-12 h-12 rounded-xl glass-card flex items-center justify-center text-primary group-hover:bg-primary/20 transition-all">
+                                                                <span class="material-symbols-outlined">chat</span>
+                                                        </div>
+                                                        <div>
+                                                                <p class="text-on-surface-variant text-label-mono">
+                                                                        WhatsApp</p>
+                                                                <p class="font-body-lg">+593 099 023 7411</p>
+                                                        </div>
+                                                </a>
+                                                <div class="flex items-center gap-md">
+                                                        <div
+                                                                class="w-12 h-12 rounded-xl glass-card flex items-center justify-center text-secondary">
+                                                                <span class="material-symbols-outlined">mail</span>
+                                                        </div>
+                                                        <div>
+                                                                <p class="text-on-surface-variant text-label-mono">Email
+                                                                </p>
+                                                                <p class="font-body-lg">morochito344@gmail.com</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="contact-reveal glass-card card-3d p-xl rounded-3xl reveal-on-scroll flex flex-col items-center justify-center text-center"
+                                        style="min-height:200px">
+                                        <div class="card-glow"></div>
+                                        <div class="card-shine"></div>
+                                        <span class="material-symbols-outlined text-primary mb-md"
+                                                style="font-size:48px;font-variation-settings:'FILL' 1">chat</span>
+                                        <h3 class="font-headline-md text-headline-md mb-sm">Hablemos ahora</h3>
+                                        <p class="text-on-surface-variant font-body-md mb-lg max-w-sm">Respuesta rápida
+                                                por WhatsApp.</p>
+                                        <a class="bg-primary text-on-primary px-xl py-md rounded-xl font-bold hover:shadow-[0_0_25px_rgba(173,198,255,0.4)] transition-all inline-flex items-center gap-sm"
+                                                href="https://wa.me/5930990237411" target="_blank">
+                                                <span class="material-symbols-outlined"
+                                                        style="font-size:20px">send</span> Enviar Mensaje
+                                        </a>
+                                        <div class="flex items-center gap-sm mt-md text-sm text-on-surface-variant">
+                                                <span class="relative flex h-2.5 w-2.5">
+                                                        <span
+                                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                                        <span
+                                                                class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                                                </span>
+                                                Respuesta promedio: menos de 30 min
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+        </main>
+        <!-- ============================================================ -->
+        <!-- SECCIÓN: FOOTER — Enlaces sociales y créditos               -->
+        <!-- ============================================================ -->
+        <footer class="w-full py-xl border-t border-outline-variant/20 bg-surface-container-lowest mt-xl">
+                <div
+                        class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-md">
+                        <div class="flex flex-col gap-xs items-center md:items-start">
+                                <span class="font-headline-md text-headline-md font-bold text-on-surface">CHRISTOPHER
+                                        REVELO</span>
+                                <p class="text-on-surface-variant font-body-md opacity-80">© 2026 Christopher Revelo.
+                                        Construido para el futuro.</p>
+                        </div>
+                        <div class="flex gap-lg">
+                                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200"
+                                        href="https://github.com/Alexander3456R" target="_blank">GitHub</a>
+                                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200"
+                                        href="https://linkedin.com/in/christopher-revelo-366739311"
+                                        target="_blank">LinkedIn</a>
+                                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200"
+                                        href="https://www.instagram.com/alex.red6" target="_blank">Instagram</a>
+                                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200"
+                                        href="https://wa.me/5930990237411" target="_blank">WhatsApp</a>
+                        </div>
+                        <button class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary group hover:bg-primary/10 transition-all"
+                                onclick="animarScroll(0)">
+                                <span
+                                        class="material-symbols-outlined group-hover:-translate-y-1 transition-transform">arrow_upward</span>
+                        </button>
+                </div>
+        </footer>
+        <!-- Lightbox para zoom de im&aacute;genes -->
+        <div class="lightbox" id="lightbox">
+                <button class="lightbox-cerrar" id="lightbox-cerrar" aria-label="Cerrar">
+                        <span class="material-symbols-outlined">close</span>
+                </button>
+                <img class="lightbox-imagen" id="lightbox-img" src="" alt="">
+        </div>
+        <script src="scripts.js"></script>
+</body>
+
+</html>
