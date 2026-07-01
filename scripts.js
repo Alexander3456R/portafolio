@@ -551,32 +551,9 @@ const iniciarProyectosGithub = async () => {
     const contenedor = document.getElementById('projects-grid');
     if (!contenedor) return;
 
-    const repositorios = [
-        'Alexander3456R/appsalon_mvc',
-        'Alexander3456R/uptask_mvc',
-        'Alexander3456R/bienesraices'
-    ];
+    const repositorios = [];
 
-    const datosRespaldo = {
-        'Alexander3456R/appsalon_mvc': {
-            description: 'Aplicación web para salones de belleza con sistema de citas, catálogo de servicios y administración.',
-            language: 'PHP',
-            topics: ['mvc', 'appointments', 'laravel'],
-            html_url: 'https://github.com/Alexander3456R/appsalon_mvc'
-        },
-        'Alexander3456R/uptask_mvc': {
-            description: 'Gestor de proyectos y tareas con autenticación, roles y panel administrable.',
-            language: 'PHP',
-            topics: ['task-manager', 'mvc', 'php'],
-            html_url: 'https://github.com/Alexander3456R/uptask_mvc'
-        },
-        'Alexander3456R/bienesraices': {
-            description: 'Plataforma de anuncios inmobiliarios con CRUD completo, filtros y galería de propiedades.',
-            language: 'PHP',
-            topics: ['real-estate', 'php', 'mvc'],
-            html_url: 'https://github.com/Alexander3456R/bienesraices'
-        }
-    };
+    const datosRespaldo = {};
 
     const gradientesLenguaje = {
         'PHP': ['#777BB4', '#4F5B93'],
