@@ -51,15 +51,27 @@ const iniciarNavegacionActiva = () => {
     const contenedor = document.getElementById('nav-links');
     if (!enlaces.length || !indicador || !contenedor) return;
 
+    let cacheSecciones = [];
+    let umbralInicio = 0;
+
+    const actualizarCache = () => {
+        cacheSecciones = [...secciones].map(s => ({
+            id: s.id,
+            offsetTop: s.offsetTop
+        }));
+        const primeraSec = secciones[0];
+        umbralInicio = primeraSec ? primeraSec.offsetTop - window.innerHeight * 0.4 : 0;
+    };
+
     const actualizar = () => {
         const alturaVentana = window.innerHeight;
         const margen = Math.min(alturaVentana * 0.3, 200);
         const scrollY = window.scrollY + margen;
 
         let activo = null;
-        secciones.forEach(s => {
+        for (const s of cacheSecciones) {
             if (scrollY >= s.offsetTop) activo = s.id;
-        });
+        }
 
         enlaces.forEach(e => {
             e.classList.remove('activo');
@@ -67,8 +79,6 @@ const iniciarNavegacionActiva = () => {
         });
 
         let enlaceActivo = null;
-        const primeraSec = secciones[0];
-        const umbralInicio = primeraSec ? primeraSec.offsetTop - alturaVentana * 0.4 : 0;
 
         if (!activo || window.scrollY < umbralInicio) {
             enlaceActivo = [...enlaces].find(e => e.dataset.seccion === 'inicio');
@@ -83,6 +93,7 @@ const iniciarNavegacionActiva = () => {
         }
     };
 
+    actualizarCache();
     actualizar();
 
     window.addEventListener('scroll', actualizar, { passive: true });
@@ -90,14 +101,23 @@ const iniciarNavegacionActiva = () => {
     let idResize;
     window.addEventListener('resize', () => {
         clearTimeout(idResize);
-        idResize = setTimeout(recalcularNavegacion, 80);
+        idResize = setTimeout(() => {
+            actualizarCache();
+            recalcularNavegacion();
+        }, 80);
     });
 
     if (document.fonts) {
-        document.fonts.ready.then(recalcularNavegacion);
+        document.fonts.ready.then(() => {
+            actualizarCache();
+            recalcularNavegacion();
+        });
     }
 
-    window.addEventListener('load', recalcularNavegacion);
+    window.addEventListener('load', () => {
+        actualizarCache();
+        recalcularNavegacion();
+    });
 };
 
 // ============================================================

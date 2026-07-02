@@ -4,7 +4,7 @@
 
 window.addEventListener('load', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
-    iniciarParticulas();
+    iniciarRedNodos();
     iniciarScrollSuave();
     iniciarNavMovil();
 

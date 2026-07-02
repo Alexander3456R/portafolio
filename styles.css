@@ -20,8 +20,8 @@
     --nav-indicator-2:  #4CD7F6;
     --nav-indicator-shadow: rgba(76, 215, 246, 0.35);
     --nav-radius: 999px;
-    --nav-blur:  22px;
-    --nav-blur-scrolled: 30px;
+    --nav-blur:  12px;
+    --nav-blur-scrolled: 16px;
     --nav-transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -264,21 +264,12 @@ html {
     box-shadow: 0 0 8px rgba(76, 215, 246, 0.6);
 }
 
-/* --- Partículas --- */
-.particle-container {
+/* --- Red de nodos --- */
+.network-canvas {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    opacity: 0.3;
 }
 
 /* --- Etiquetas de Habilidades --- */
@@ -311,7 +302,6 @@ html {
 .skill-card-3d {
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
-    will-change: transform;
     position: relative;
     cursor: default;
 }
@@ -320,7 +310,6 @@ html {
     perspective: 1200px;
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out;
-    will-change: transform;
     position: relative;
 }
 
